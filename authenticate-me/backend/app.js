@@ -4,6 +4,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const routes = require('./routes');
 
 // Check environment
 const { environment } = require('./config');
@@ -38,3 +39,10 @@ app.use(
     }
   })
 );
+
+// Connect all the routes
+app.use(routes); 
+
+
+
+module.exports = app;
