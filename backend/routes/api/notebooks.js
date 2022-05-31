@@ -13,12 +13,12 @@ router.get("/", asyncHandler(async (req, res) => {
   // res.json(allNotebooks)
   // console.log("hi")
   
-  const { userId } = req.session.auth;
+  // const userId = req.params.userId;
   const notebooks = await Notebook.findAll({
     include: Note,
-    where: {
-      userId
-    }
+    // where: {
+    //   userId
+    // }
   });
   
   return res.json(notebooks)

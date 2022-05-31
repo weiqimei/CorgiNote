@@ -2,9 +2,9 @@ import { csrfFetch } from "./csrf";
 
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
 
-const loadNotebooks = notebook => ({
+const loadNotebooks = notebooks => ({
   type: GET_NOTEBOOKS,
-  notebook
+  notebooks
 })
 
 // thunk action creator for getting all notes

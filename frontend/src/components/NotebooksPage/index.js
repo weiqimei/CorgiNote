@@ -21,10 +21,7 @@ const NotebooksPage = () => {
           {notebooks.map(notebook => {
             return <li key={notebook.id}>
               <div>
-                {notebook.title}
-              </div>
-              <div>
-                {notebook.content}
+                {notebook.name}
               </div>
             </li>
           })}
