@@ -17,3 +17,12 @@ npx sequelize-cli seed:generate --name tagSeeders
 npx sequelize-cli seed:generate --name notebookSeeders
 npx sequelize-cli seed:generate --name noteSeeders
 npx dotenv sequelize-cli db:seed:all
+
+
+# Heroku
+heroku login
+git add .
+git commit -m "message here"
+git push heroku main
+heroku run npm run sequelize db:migrate
+heroku run npm run sequelize db:seed:all
