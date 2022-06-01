@@ -37,6 +37,8 @@ export const createNotebook = (data) => async dispatch => {
   const notebook = await response.json();
 
   dispatch(addNotebook(notebook))
+
+  return notebook
 }
 
 const initialState = {}
@@ -57,8 +59,8 @@ const notebookReducer = (state = initialState, action) => {
           ...state,
           [action.notebook.id]: action.notebook
         }
-        const notebooks = newState.notebooks.map(id => newState[id])
-        notebooks.push(action.notebook);
+        // const notebooks = newState.notebooks.map(id => newState[id])
+        // notebooks.push(action.notebook);
         return newState
       }
       break
