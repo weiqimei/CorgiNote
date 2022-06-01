@@ -59,8 +59,6 @@ const notebookReducer = (state = initialState, action) => {
           ...state,
           [action.notebook.id]: action.notebook
         }
-        // const notebooks = newState.notebooks.map(id => newState[id])
-        // notebooks.push(action.notebook);
         return newState
       }
       break
