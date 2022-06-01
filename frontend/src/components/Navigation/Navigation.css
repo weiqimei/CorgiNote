@@ -48,6 +48,7 @@ html,
 body {
   font-family: "Roboto", sans-serif;  
   font-weight: 300;
+  background: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/691bf469319927.5b7cf977efb27.png") no-repeat center center fixed;
 }
 
 .header {

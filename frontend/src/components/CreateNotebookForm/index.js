@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAllNotebooks, createNotebook } from '../../store/notebooks';
+import './CreateNotebookForm.css'
 
 const CreateNotebookForm = ({ hideForm }) => {
   const currentUserId = useSelector((state) => state.session.user.id)
@@ -36,7 +37,8 @@ const CreateNotebookForm = ({ hideForm }) => {
   };
 
   return (
-    <section>
+    <section className='form'>
+        <div className='add-notebook-text'>Add Notebook</div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -44,7 +46,7 @@ const CreateNotebookForm = ({ hideForm }) => {
           required
           value={name}
           onChange={updateName} />
-        <button type="submit">Post New Notebook</button>
+        <button className='post-button' type="submit">Post New Notebook</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </section>

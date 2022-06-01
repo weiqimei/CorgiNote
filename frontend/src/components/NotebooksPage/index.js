@@ -17,7 +17,7 @@ const NotebooksPage = () => {
   return (
     <>
       <div>
-        <h1>Add Notebook</h1>
+        {/* <h1>Add Notebook</h1> */}
         <CreateNotebookForm />
         <h2>Notebooks</h2>
         <ul>
