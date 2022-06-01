@@ -6,10 +6,7 @@ import CreateNotebookForm from "../CreateNotebookForm"
 const NotebooksPage = () => {
   const dispatch = useDispatch();
   const allNotebooks = useSelector((state) => state.notebooks)  
-  console.log(allNotebooks)
-  const notebooks = Object.values(allNotebooks)
-  console.log(notebooks)
-  
+  const notebooks = Object.values(allNotebooks)  
 
   useEffect(() => {
     dispatch(notebooksActions.getAllNotebooks())
@@ -17,7 +14,6 @@ const NotebooksPage = () => {
   return (
     <>
       <div>
-        {/* <h1>Add Notebook</h1> */}
         <CreateNotebookForm />
         <h2>Notebooks</h2>
         <ul>

@@ -13,6 +13,7 @@ function Navigation({ isLoaded }) {
       <>
       <ProfileButton user={sessionUser} />
       <NavLink to="/notebooks">Notebooks</NavLink>
+        <NavLink to="/notes">Notes</NavLink>
       </>
     );
   } else {

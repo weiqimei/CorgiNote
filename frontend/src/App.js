@@ -6,9 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import NotebooksPage from "./components/NotebooksPage";
-// import CreateNotebooksPage from "./components/CreateNotebooksPage";
-
-
+import NotesPage from "./components/NotesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,9 +23,9 @@ function App() {
           <Route path="/notebooks">
             <NotebooksPage />
           </Route>
-          {/* <Route path="/notebooks/create">
-            <CreateNotebooksPage />
-          </Route> */}
+          <Route path="/notes">
+            <NotesPage />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
