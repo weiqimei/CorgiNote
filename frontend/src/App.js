@@ -6,6 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import NotebooksPage from "./components/NotebooksPage";
+// import CreateNotebooksPage from "./components/CreateNotebooksPage";
+
 
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
           <Route path="/notebooks">
             <NotebooksPage />
           </Route>
+          {/* <Route path="/notebooks/create">
+            <CreateNotebooksPage />
+          </Route> */}
           <Route path="/login">
             <LoginFormPage />
           </Route>
