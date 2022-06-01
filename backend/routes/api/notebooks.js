@@ -7,23 +7,44 @@ const { User, Note, Notebook, Tag } = require('../../db/models');
 
 const router = express.Router();
 
+//-----------------------NOTE VALIDATOR-----------------------
+// const validateNotebooks = [
+//   check('name')
+//     .exists({ checkFalsy: true })
+//     .isLength({ max: 50 })
+//     .withMessage('Name cannot be longer than 50 characters'),
+//   handleValidationErrors,
+// ];
 
+//-----------------------GET ALL NOTEBOOKS-----------------------
 router.get("/", asyncHandler(async (req, res) => {
-  // const allNotebooks = await Notebook.findAll({ include: { model: User } })
-  // res.json(allNotebooks)
-  // console.log("hi")
-  
-  // const userId = req.params.userId;
   const notebooks = await Notebook.findAll({
-    include: Note,
-    // where: {
-    //   userId
-    // }
+    include: Note
   });
   
   return res.json(notebooks)
 }))
 
+// router.get(
+//   "/:userId",
+//   asyncHandler(async (req, res) => {
+//     const userId = req.params.userId;
+//     const notebooks = await Notebook.findAll({
+//       where: {
+//         userId: userId,
+//       }
+//     });
+//     console.log('---------IN GET ROUTE-----------')
+//     return res.json(notebooks);
+//   })
+// );
+
+
+//-----------------------CREATE NOTEBOOK-----------------------
+// router.post("/", validateNotebooks, asyncHandler(async (req, res) => {
+//     const notebook = await Notebook.create(req.body);
+//     return res.json(notebook)
+//   }))
 
 
 
@@ -45,14 +66,6 @@ router.get("/", asyncHandler(async (req, res) => {
 
 
 
-//-----------------------NOTE VALIDATOR-----------------------
-const validateNote = [
-  check('title')
-    .exists({ checkFalsy: true })
-    .isLength({ max: 50 })
-    .withMessage('Title cannot be longer than 50 characters'),
-  handleValidationErrors,
-];
 //-----------------------GET ALL NOTES-----------------------
 // router.get("/", asyncHandler(async (req, res) => {
 

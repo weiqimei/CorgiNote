@@ -1,13 +1,21 @@
 import { csrfFetch } from "./csrf";
 
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
+const ADD_NOTEBOOK = 'notebooks/ADD_NOTEBOOK'
 
 const loadNotebooks = notebooks => ({
   type: GET_NOTEBOOKS,
   notebooks
 })
 
-// thunk action creator for getting all notes
+const addNotebook = (notebook) => {
+  return {
+    type: ADD_NOTEBOOK,
+    notebook
+  }
+}
+
+// thunk action creator for getting all notebooks
 export const getAllNotebooks = () => async dispatch => {
   const response = await csrfFetch('api/notebooks')
 
@@ -15,6 +23,20 @@ export const getAllNotebooks = () => async dispatch => {
     const notebooks = await response.json();
     dispatch(loadNotebooks(notebooks))
   }
+}
+
+// thunk action creator for creating a notebook
+export const createNotebook = (data) => async dispatch => {
+  const response = await csrfFetch('api/notebooks', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  const notebook = await response.json();
+
+  dispatch(addNotebook(notebook))
 }
 
 const initialState = {}

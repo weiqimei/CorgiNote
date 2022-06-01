@@ -14,10 +14,28 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <div>
+      <div className="header">
+        <div className="logo">
+          CorgiNote
+        </div>
+        <nav className='link'>
+          <span>
+            <NavLink to="/login">Log In</NavLink>
+            <div className="bar"></div>
+          </span>
+          </nav>
+          <nav className='link'>
+          <span>
+            <NavLink to="/signup">Sign Up</NavLink>
+            <div className="bar"></div>
+          </span>
+        </nav>
+      </div>
+        <div className='homepage-text'>
+          Stay organized with CorgiNote!
+        </div>
+      </div>
     );
   }
 
