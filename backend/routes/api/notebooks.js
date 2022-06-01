@@ -17,27 +17,21 @@ const validateNotebooks = [
 ];
 
 //-----------------------GET ALL NOTEBOOKS-----------------------
-router.get("/", asyncHandler(async (req, res) => {
-  const notebooks = await Notebook.findAll({
-    include: Note
-  });
+// router.get("/", asyncHandler(async (req, res) => {
+//   const notebooks = await Notebook.findAll({
+//     include: Note
+//   });
   
-  return res.json(notebooks)
-}))
+//   return res.json(notebooks)
+// }))
 
-// router.get(
-//   "/:userId",
-//   asyncHandler(async (req, res) => {
-//     const userId = req.params.userId;
-//     const notebooks = await Notebook.findAll({
-//       where: {
-//         userId: userId,
-//       }
-//     });
-//     console.log('---------IN GET ROUTE-----------')
-//     return res.json(notebooks);
-//   })
-// );
+router.get('/', requireAuth, asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const notebooks = await Notebook.findAll({
+    where: { userId: userId }
+  });
+  return res.json(notebooks);
+}));
 
 
 //-----------------------CREATE NOTEBOOK-----------------------
