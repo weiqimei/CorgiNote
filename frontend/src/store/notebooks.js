@@ -51,6 +51,17 @@ const notebookReducer = (state = initialState, action) => {
       return {
         ...allNotebooks
       }
+    case ADD_NOTEBOOK:
+      if (!state[action.notebook.id]) {
+        const newState = {
+          ...state,
+          [action.notebook.id]: action.notebook
+        }
+        const notebooks = newState.notebooks.map(id => newState[id])
+        notebooks.push(action.notebook);
+        return newState
+      }
+      break
     default:
       return state;
   }
