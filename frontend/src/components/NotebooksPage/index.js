@@ -18,6 +18,7 @@ const NotebooksPage = () => {
     <>
       <div>
         <h1>Add Notebook</h1>
+        <CreateNotebookForm />
         <h2>Notebooks</h2>
         <ul>
           {notebooks.map(notebook => {
