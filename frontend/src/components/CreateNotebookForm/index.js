@@ -39,6 +39,8 @@ const CreateNotebookForm = ({ hideForm }) => {
 
   const handleCancelClick = (e) => {
     e.preventDefault();
+    history.push('/notebooks');
+    reset()
   };
  
   return (
