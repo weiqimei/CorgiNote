@@ -20,6 +20,9 @@ const NotesPage = () => {
               <div>
                 {note.title}
               </div>
+              <div>
+                {note.content}
+              </div>
             </li>
           })}
         </ul>
