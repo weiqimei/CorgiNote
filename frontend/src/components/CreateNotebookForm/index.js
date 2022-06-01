@@ -35,7 +35,7 @@ const CreateNotebookForm = ({ hideForm }) => {
   const handleCancelClick = (e) => {
     e.preventDefault();
   };
-
+ 
   return (
     <section className='form'>
         <div className='add-notebook-text'>Add Notebook</div>
