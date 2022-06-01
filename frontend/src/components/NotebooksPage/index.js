@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as notebooksActions from '../../store/notebooks'
+import CreateNotebookForm from "../CreateNotebookForm"
 
 const NotebooksPage = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const NotebooksPage = () => {
   return (
     <>
       <div>
+        <h1>Add Notebook</h1>
+        <CreateNotebookForm />
         <h2>Notebooks</h2>
         <ul>
           {notebooks.map(notebook => {
