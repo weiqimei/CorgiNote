@@ -15,6 +15,11 @@ module.exports = {
       content: {
         type: Sequelize.TEXT
       },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: "Users" }
+      },
       notebookId: {
         allowNull: false,
         type: Sequelize.INTEGER,

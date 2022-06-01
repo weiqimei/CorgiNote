@@ -7,7 +7,7 @@ const { User, Note, Notebook, Tag } = require('../../db/models');
 
 const router = express.Router();
 
-//-----------------------NOTE VALIDATOR-----------------------
+//-----------------------NOTEBOOK VALIDATOR-----------------------
 const validateNotebooks = [
   check('name')
     .exists({ checkFalsy: true })
@@ -17,14 +17,6 @@ const validateNotebooks = [
 ];
 
 //-----------------------GET ALL NOTEBOOKS-----------------------
-// router.get("/", asyncHandler(async (req, res) => {
-//   const notebooks = await Notebook.findAll({
-//     include: Note
-//   });
-  
-//   return res.json(notebooks)
-// }))
-
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const notebooks = await Notebook.findAll({
@@ -45,48 +37,5 @@ router.post("/", validateNotebooks, asyncHandler(async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//-----------------------GET ALL NOTES-----------------------
-// router.get("/", asyncHandler(async (req, res) => {
-
-//   const userId = req.params.userId;
-//   const notes = await Note.findAll({
-//     where: {
-//       userId: userId
-//     },
-//     order: [["updatedAt", "DESC"]],
-//   })
-
-//   return res.json(notes)
-// }))
-//-----------------------CREATE NOTE-----------------------
-// router.post('/new', validateNote, requireAuth, asyncHandler(async (req, res) => {
-  //   const { content, dueDate, listId } = req.body;
-  //   const newnote = await note.create({
-    //     content,
-    //     dueDate,
-    //     userId: req.session.auth.userId
-    //   });
-    //   await Listnote.create({
-      //     noteId: newnote.id,
-      //     listId
-//   })
-//   res.redirect('/notes')
-// })
-// );
 
 module.exports = router;
