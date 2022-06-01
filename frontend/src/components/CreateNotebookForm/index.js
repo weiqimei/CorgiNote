@@ -17,6 +17,10 @@ const CreateNotebookForm = ({ hideForm }) => {
     dispatch(getAllNotebooks());
   }, [dispatch]);
 
+  const reset = () => {
+    setName("");
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,14 +32,15 @@ const CreateNotebookForm = ({ hideForm }) => {
     let createdNotebook;
     createdNotebook = await dispatch(createNotebook(payload))
     if (createdNotebook) {
-      history.push(`/`);
+      history.push('/notebooks');
+      reset()
     }
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
   };
-
+ 
   return (
     <section className='form'>
         <div className='add-notebook-text'>Add Notebook</div>
