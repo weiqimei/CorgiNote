@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Note, Notebook, Tag } = require('../../db/models');
+const { User, Note, Tag } = require('../../db/models');
 
 const router = express.Router();
 
@@ -25,6 +25,10 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
   return res.json(notes);
 }));
 
-
+//-----------------------CREATE NOTE-----------------------
+router.post("/", validateNotes, asyncHandler(async (req, res) => {
+  const note = await Note.create(req.body);
+  return res.json(note)
+}))
 
 module.exports = router;
