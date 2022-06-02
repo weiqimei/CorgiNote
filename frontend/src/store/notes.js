@@ -4,6 +4,7 @@ const GET_NOTES = 'notes/GET_NOTES'
 const ADD_NOTE = 'notes/ADD_NOTE'
 const GET_ONE = 'notes/GET_ONE'
 const EDIT_NOTE = 'notes/EDIT_NOTE'
+const DELETE_NOTE = 'notes/DELETE_NOTE'
 
 const loadNotes = notes => ({
   type: GET_NOTES,
@@ -27,6 +28,13 @@ const loadOneNote = (note) => {
 const editNote = (note) => {
   return {
     type: EDIT_NOTE,
+    note
+  }
+}
+
+const deleteNote = (note) => {
+  return {
+    type: DELETE_NOTE,
     note
   }
 }
@@ -85,6 +93,19 @@ export const updateNote = (data) => async dispatch => {
   }
 }
 
+// thunk action creator for deleting a note
+export const removeNote = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/notes/${id}`, {
+    method: "DELETE",
+  })
+  if (response.ok) {
+    const note = await response.json()
+    dispatch(deleteNote(note));
+    return
+  }
+}
+
+
 const initialState = {}
 
 const noteReducer = (state = initialState, action) => {
@@ -117,6 +138,17 @@ const noteReducer = (state = initialState, action) => {
       for (let note in state.notes) {
         if (note.id === action.note.id) {
           return action.note
+        }
+        else {
+          return note
+        }
+      }
+      return newState
+    case DELETE_NOTE:
+      for (let note in state.notes) {
+        if (note.id === action.note.id) {
+          delete action.note
+          return newState
         }
         else {
           return note
