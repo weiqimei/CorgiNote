@@ -8,14 +8,11 @@ const NoteDetailPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams()
   const note = useSelector((state) => state.notes[id])
-
   const sessionUser = useSelector((state) => state.session.user)
-
 
   useEffect(() => {
     dispatch(notesActions.getNote(id))
   }, [dispatch, id])
-
 
   return (
     <>
