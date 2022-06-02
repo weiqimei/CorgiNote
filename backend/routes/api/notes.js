@@ -31,4 +31,14 @@ router.post("/", validateNotes, asyncHandler(async (req, res) => {
   return res.json(note)
 }))
 
+//-----------------------GET ONE NOTE-----------------------
+router.get("/:id", asyncHandler(async (req, res) => {
+  const noteId = parseInt(req.params.id, 10)
+  const note = await Note.findByPk(noteId);
+  return res.json(note);
+}));
+
+
+
+
 module.exports = router;

@@ -28,9 +28,9 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 
 //-----------------------CREATE NOTEBOOK-----------------------
 router.post("/", validateNotebooks, asyncHandler(async (req, res) => {
-    const notebook = await Notebook.create(req.body);
-    return res.json(notebook)
-  }))
+  const notebook = await Notebook.create(req.body);
+  return res.json(notebook)
+}))
 
 
 

@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_NOTES = 'notes/GET_NOTES'
 const ADD_NOTE = 'notes/ADD_NOTE'
+const GET_ONE = 'notes/GET_ONE'
 
 const loadNotes = notes => ({
   type: GET_NOTES,
@@ -11,6 +12,13 @@ const loadNotes = notes => ({
 const addNote = (note) => {
   return {
     type: ADD_NOTE,
+    note
+  }
+}
+
+const loadOneNote = (note) => {
+  return {
+    type: GET_ONE,
     note
   }
 }
@@ -27,7 +35,7 @@ export const getAllNotes = () => async dispatch => {
 
 // thunk action creator for creating a note
 export const createNote = (data) => async dispatch => {
-  const response = await csrfFetch('api/notes', {
+  const response = await csrfFetch('/api/notes', {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -39,6 +47,17 @@ export const createNote = (data) => async dispatch => {
   dispatch(addNote(note))
 
   return note
+}
+
+// thunk action creator for getting one note
+export const getNote = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/notes/${id}`)
+
+  if (response.ok) {
+    const note = await response.json();
+    dispatch(loadOneNote(note))
+    return response
+  }
 }
 
 const initialState = {}
@@ -62,6 +81,12 @@ const noteReducer = (state = initialState, action) => {
         return newState
       }
       break
+    case GET_ONE:
+      const note = {};
+      note[action.note.id] = action.note
+      return {
+        ...note
+      }
     default:
       return state;
   }

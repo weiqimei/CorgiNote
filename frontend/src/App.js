@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import NotebooksPage from "./components/NotebooksPage";
 import NotesPage from "./components/NotesPage";
+import NoteDetailPage from "./components/NoteDetailPage"
 
 function App() {
   const dispatch = useDispatch();
@@ -23,8 +24,11 @@ function App() {
           <Route path="/notebooks">
             <NotebooksPage />
           </Route>
-          <Route path="/notes">
+          <Route exact path="/notes">
             <NotesPage />
+          </Route>
+          <Route exact path="/notes/:id">
+            <NoteDetailPage />
           </Route>
           <Route path="/login">
             <LoginFormPage />
