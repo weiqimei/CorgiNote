@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as notebooksActions from '../../store/notebooks'
 import CreateNotebookForm from "../CreateNotebookForm"
+import './NotebooksPage.css';
 
 const NotebooksPage = () => {
   const dispatch = useDispatch();
