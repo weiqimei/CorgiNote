@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import NotebooksPage from "./components/NotebooksPage";
 import NotesPage from "./components/NotesPage";
 import NoteDetailPage from "./components/NoteDetailPage"
+import EditNoteForm from "./components/EditNoteForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path="/notes/:id">
             <NoteDetailPage />
+          </Route>
+          <Route exact path="/notes/:id/edit">
+            <EditNoteForm />
           </Route>
           <Route path="/login">
             <LoginFormPage />

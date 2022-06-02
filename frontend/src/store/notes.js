@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const GET_NOTES = 'notes/GET_NOTES'
 const ADD_NOTE = 'notes/ADD_NOTE'
 const GET_ONE = 'notes/GET_ONE'
+const EDIT_NOTE = 'notes/EDIT_NOTE'
 
 const loadNotes = notes => ({
   type: GET_NOTES,
@@ -19,6 +20,13 @@ const addNote = (note) => {
 const loadOneNote = (note) => {
   return {
     type: GET_ONE,
+    note
+  }
+}
+
+const editNote = (note) => {
+  return {
+    type: EDIT_NOTE,
     note
   }
 }
@@ -60,9 +68,27 @@ export const getNote = (id) => async dispatch => {
   }
 }
 
+// thunk action creator for editing a note
+export const updateNote = (data) => async dispatch => {
+  const response = await csrfFetch(`/api/notes/${data.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+
+  if (response.ok) {
+    const note = await response.json();
+    dispatch(editNote(note))
+    return note
+  }
+}
+
 const initialState = {}
 
 const noteReducer = (state = initialState, action) => {
+  const newState = { ...state }
   switch (action.type) {
     case GET_NOTES:
       const allNotes = {};
@@ -87,6 +113,16 @@ const noteReducer = (state = initialState, action) => {
       return {
         ...note
       }
+    case EDIT_NOTE:
+      for (let note in state.notes) {
+        if (note.id === action.note.id) {
+          return action.note
+        }
+        else {
+          return note
+        }
+      }
+      return newState
     default:
       return state;
   }

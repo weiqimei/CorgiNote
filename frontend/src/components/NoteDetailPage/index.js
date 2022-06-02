@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import * as notesActions from '../../store/notes'
+import { NavLink } from "react-router-dom"
 
 const NoteDetailPage = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const NoteDetailPage = () => {
       {sessionUser?.id === note[0].userId &&
         <div>
           <h1>Note Details</h1>
-          <h2>{note[0].title}</h2>
+          <NavLink to={`/notes/${note[0].id}/edit`}>
+            <h2>{note[0].title}</h2>
+          </NavLink>
           <h3>{note[0].content}</h3>
         </div>
       }

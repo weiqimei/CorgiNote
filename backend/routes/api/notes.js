@@ -32,12 +32,24 @@ router.post("/", validateNotes, asyncHandler(async (req, res) => {
 }))
 
 //-----------------------GET ONE NOTE-----------------------
-router.get("/:id", asyncHandler(async (req, res) => {
+router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
   const noteId = parseInt(req.params.id, 10)
   const note = await Note.findByPk(noteId);
   return res.json(note);
 }));
 
+//-----------------------EDIT NOTE-----------------------
+router.put("/:id", requireAuth, handleValidationErrors, asyncHandler(async (req, res) => {
+  const noteId = parseInt(req.params.id, 10);
+  const note = await Note.findByPk(noteId)
+
+  note.userId = req.body.userId
+  note.title = req.body.title
+  note.content = req.body.content
+
+  await note.save();
+  return res.json(note)
+}))
 
 
 
