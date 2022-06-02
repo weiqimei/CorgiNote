@@ -28,6 +28,13 @@ heroku run npm run sequelize db:migrate
 heroku run npm run sequelize db:seed:all
 
 
+# Reset database on Heroku
+heroku run npm run sequelize db:seed:undo:all
+heroku run npm run sequelize db:migrate:undo:all
+heroku run npm run sequelize db:migrate
+heroku run npm run sequelize db:seed:all
+
+
 1. api route
 2. thunk and reducer in store, add to index.js reducer combiner
 3. home component
