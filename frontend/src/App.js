@@ -9,6 +9,8 @@ import NotebooksPage from "./components/NotebooksPage";
 import NotesPage from "./components/NotesPage";
 import NoteDetailPage from "./components/NoteDetailPage"
 import EditNoteForm from "./components/EditNoteForm";
+import DeleteNotePage from "./components/DeleteNotePage";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +35,9 @@ function App() {
           </Route>
           <Route exact path="/notes/:id/edit">
             <EditNoteForm />
+          </Route>
+          <Route exact path="/notes/:id/delete">
+            <DeleteNotePage />
           </Route>
           <Route path="/login">
             <LoginFormPage />

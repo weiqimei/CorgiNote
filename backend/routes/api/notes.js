@@ -51,6 +51,17 @@ router.put("/:id", requireAuth, handleValidationErrors, asyncHandler(async (req,
   return res.json(note)
 }))
 
+//-----------------------DELETE NOTE-----------------------
+router.delete("/:id", asyncHandler(async (req, res) => {
+  const noteId = parseInt(req.params.id, 10);
+  const note = await Note.findByPk(noteId)
+  if (note) {
+    await note.destroy()
+    res.json({ message: 'Note has been deleted' })
+  } else {
+    res.json({ message: 'Failed to delete note' })
+  }
+}))
 
 
 module.exports = router;
