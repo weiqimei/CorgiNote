@@ -13,7 +13,7 @@ const validateNotes = [
     .exists({ checkFalsy: true })
     .isLength({ max: 50 })
     .withMessage('Title cannot be longer than 50 characters'),
-  handleValidationErrors,
+  handleValidationErrors
 ];
 
 //-----------------------GET ALL NOTES-----------------------

@@ -32,6 +32,12 @@ router.post("/", validateNotebooks, asyncHandler(async (req, res) => {
   return res.json(notebook)
 }))
 
+//-----------------------GET ONE NOTEBOOK-----------------------
+router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
+  const notebookId = parseInt(req.params.id, 10)
+  const notebook = await Notebook.findByPk(notebookId);
+  return res.json(notebook);
+}));
 
 
 

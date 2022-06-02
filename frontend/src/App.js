@@ -10,6 +10,7 @@ import NotesPage from "./components/NotesPage";
 import NoteDetailPage from "./components/NoteDetailPage"
 import EditNoteForm from "./components/EditNoteForm";
 import DeleteNotePage from "./components/DeleteNotePage";
+import NotebookDetailPage from "./components/NotebookDetailPage";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/notebooks">
+          <Route exact path="/notebooks">
             <NotebooksPage />
           </Route>
           <Route exact path="/notes">
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route exact path="/notes/:id/delete">
             <DeleteNotePage />
+          </Route>
+          <Route exact path="/notebooks/:id">
+            <NotebookDetailPage />
           </Route>
           <Route path="/login">
             <LoginFormPage />

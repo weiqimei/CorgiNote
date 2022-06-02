@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
 const ADD_NOTEBOOK = 'notebooks/ADD_NOTEBOOK'
+const GET_ONE = 'notes/GET_ONE'
 
 const loadNotebooks = notebooks => ({
   type: GET_NOTEBOOKS,
@@ -11,6 +12,13 @@ const loadNotebooks = notebooks => ({
 const addNotebook = (notebook) => {
   return {
     type: ADD_NOTEBOOK,
+    notebook
+  }
+}
+
+const loadOneNotebook = (notebook) => {
+  return {
+    type: GET_ONE,
     notebook
   }
 }
@@ -41,9 +49,21 @@ export const createNotebook = (data) => async dispatch => {
   return notebook
 }
 
+// thunk action creator for getting one notebook
+export const getNotebook = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/notebooks/${id}`)
+
+  if (response.ok) {
+    const notebook = await response.json();
+    dispatch(loadOneNotebook(notebook))
+    return response
+  }
+}
+
 const initialState = {}
 
 const notebookReducer = (state = initialState, action) => {
+  // const newState = { ...state }
   switch (action.type) {
     case GET_NOTEBOOKS:
       const allNotebooks = {};
@@ -62,6 +82,12 @@ const notebookReducer = (state = initialState, action) => {
         return newState
       }
       break
+    case GET_ONE:
+      const notebook = {};
+      notebook[action.notebook.id] = action.notebook
+      return {
+        ...notebook
+      }     
     default:
       return state;
   }
