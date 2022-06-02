@@ -6,14 +6,11 @@ import { NavLink } from "react-router-dom"
 
 const NoteDetailPage = () => {
   const dispatch = useDispatch();
-  const notes = useSelector((state) => state.notes)
-  console.log(notes)
   const { id } = useParams()
-  console.log(id)
-  const note = Object.values(notes)
-  console.log(note)
+  const note = useSelector((state) => state.notes[id])
+
   const sessionUser = useSelector((state) => state.session.user)
-  console.log(sessionUser)
+
 
   useEffect(() => {
     dispatch(notesActions.getNote(id))
@@ -22,15 +19,15 @@ const NoteDetailPage = () => {
 
   return (
     <>
-      {sessionUser?.id === note[0].userId &&
+      {sessionUser?.id === note.userId &&
         <div>
           <h1>Note Details</h1>
-          <h2>{note[0].title}</h2>
-          <h3>{note[0].content}</h3>
-          <NavLink to={`/notes/${note[0].id}/edit`}>
+          <h2>{note.title}</h2>
+          <h3>{note.content}</h3>
+          <NavLink to={`/notes/${note.id}/edit`}>
             Edit
           </NavLink>
-          <NavLink to={`/notes/${note[0].id}/delete`}>
+          <NavLink to={`/notes/${note.id}/delete`}>
             Delete
           </NavLink>
         </div>
