@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as notesActions from '../../store/notes'
 import CreateNoteForm from "../CreateNoteForm"
+import { NavLink } from "react-router-dom"
 import './NotesPage.css'
 
 const NotesPage = () => {
@@ -21,9 +22,11 @@ const NotesPage = () => {
           <ul>
             {notes.map(note => {
               return <li key={note.id}>
+                <NavLink exact to={`notes/${note.id}`}>
                 <div>
                   {note.title}
                 </div>
+                </NavLink>
                 <div>
                   {note.content}
                 </div>
