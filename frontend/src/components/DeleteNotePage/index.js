@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { removeNote } from "../../store/notes";
+import { useEffect } from "react";
+import { removeNote, getNote } from "../../store/notes";
 
 const DeleteNotePage = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,12 @@ const DeleteNotePage = () => {
   const handleDeleteClick = (e) => {
     e.preventDefault();
     dispatch(removeNote(id))
-    history.push("/notes")
+    history.push("/notebooks")
   }
+
+  useEffect(() => {
+    dispatch(getNote(id))
+  }, [dispatch, id])
 
   return (
     <>

@@ -22,7 +22,7 @@ const NotebooksPage = () => {
         <div className="notebook-box">
           {notebooks.map(notebook => {
             return <div key={notebook.id}>
-              <NavLink exact to={`notebooks/${notebook.id}`}>
+              <NavLink exact to={`/notebooks/${notebook.id}`}>
                 <div className="each-notebook">
                 {notebook.name}
               </div>

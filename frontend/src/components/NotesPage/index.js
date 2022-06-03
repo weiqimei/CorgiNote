@@ -10,14 +10,15 @@ const NotesPage = () => {
   const allNotes = useSelector((state) => state.notes)
   const notes = Object.values(allNotes)
 
-  useEffect(() => {
-    dispatch(notesActions.getAllNotes())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(notesActions.getAllNotes())
+  // }, [dispatch])
+
   return (
     <>
       <div>
         <CreateNoteForm />
-        <div className="notebook-divider"></div>
+        {/* <div className="notebook-divider"></div>
         <h2 className="notebooks-title">Notes</h2>
         <div className="notebook-box">
           {notes.map(note => {
@@ -34,7 +35,7 @@ const NotesPage = () => {
               </div>
             </div>
           })}
-        </div>
+        </div> */}
       </div>
     </>
   )

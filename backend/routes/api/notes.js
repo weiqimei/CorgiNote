@@ -17,17 +17,26 @@ const validateNotes = [
 ];
 
 //-----------------------GET ALL NOTES-----------------------
-router.get('/', requireAuth, asyncHandler(async (req, res) => {
-  const userId = req.user.id;
+router.get('/:notebookId', requireAuth, asyncHandler(async (req, res) => {
+  const notebookId = req.params.notebookId
   const notes = await Note.findAll({
-    where: { userId: userId }
+    where: { notebookId: notebookId }
   });
   return res.json(notes);
 }));
 
 //-----------------------CREATE NOTE-----------------------
 router.post("/", validateNotes, asyncHandler(async (req, res) => {
-  const note = await Note.create(req.body);
+  const { userId, notebookId, title, content} = req.body
+  const note = await Note.create({
+    userId,
+    notebookId,
+    title,
+    content,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+  );
   return res.json(note)
 }))
 
