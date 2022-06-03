@@ -17,18 +17,19 @@ const NotebooksPage = () => {
     <>
       <div>
         <CreateNotebookForm />
-        <h2>Notebooks</h2>
-        <ul>
+        <div className="notebook-divider"></div>
+        <h2 className="notebooks-title">Notebooks</h2>
+        <div className="notebook-box">
           {notebooks.map(notebook => {
-            return <li key={notebook.id}>
+            return <div key={notebook.id}>
               <NavLink exact to={`notebooks/${notebook.id}`}>
-              <div>
+                <div className="each-notebook">
                 {notebook.name}
               </div>
               </NavLink>
-            </li>
+            </div>
           })}
-        </ul>
+        </div>
       </div>
     </>
   )
