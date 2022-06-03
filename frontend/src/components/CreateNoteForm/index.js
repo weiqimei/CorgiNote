@@ -12,10 +12,19 @@ const CreateNoteForm = ({ hideForm }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [notebookId, setNotebookId] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateContent = (e) => setContent(e.target.value);
   const updateNotebookId = (e) => setNotebookId(e.target.value);
+
+  useEffect(() => {
+    const errors = [];
+
+    if (title.length >= 50) errors.push("Notebook title must be less than 50 characters")
+    setErrors(errors)
+
+  }, [title])
 
   useEffect(() => {
     dispatch(getAllNotes());
@@ -55,6 +64,9 @@ const CreateNoteForm = ({ hideForm }) => {
     <section className='form'>
       <div className='add-note-text'>Add Note</div>
       <form onSubmit={handleSubmit}>
+        <div className='error-message'>
+          {errors.map((error) => <div key={error}>{error}</div>)}
+        </div>
         <input
           type="text"
           placeholder="Title"
