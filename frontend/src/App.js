@@ -11,6 +11,7 @@ import NoteDetailPage from "./components/NoteDetailPage"
 import EditNoteForm from "./components/EditNoteForm";
 import DeleteNotePage from "./components/DeleteNotePage";
 import NotebookDetailPage from "./components/NotebookDetailPage";
+import DeleteNotebookPage from "./components/DeleteNotebookPage";
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/notebooks/:id">
             <NotebookDetailPage />
+          </Route>
+          <Route exact path="/notebooks/:id/delete">
+            <DeleteNotebookPage />
           </Route>
           <Route path="/login">
             <LoginFormPage />

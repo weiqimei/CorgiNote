@@ -39,7 +39,17 @@ router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
   return res.json(notebook);
 }));
 
-
+//-----------------------DELETE NOTEBOOK-----------------------
+router.delete("/:id", asyncHandler(async (req, res) => {
+  const notebookId = parseInt(req.params.id, 10);
+  const notebook = await Notebook.findByPk(notebookId)
+  if (notebook) {
+    await notebook.destroy()
+    res.json({ message: 'Notebook has been deleted' })
+  } else {
+    res.json({ message: 'Failed to delete notebook' })
+  }
+}))
 
 
 

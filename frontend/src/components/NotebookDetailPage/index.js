@@ -20,9 +20,9 @@ const NotebookDetailPage = () => {
         <div>
           <h1>Notebook Details</h1>
           <h2>{notebook.name}</h2>
-          <NavLink to={`/notebooks/${notebook.id}/edit`}>
+          {/* <NavLink to={`/notebooks/${notebook.id}/edit`}>
             Edit
-          </NavLink>
+          </NavLink> */}
           <NavLink to={`/notebooks/${notebook.id}/delete`}>
             Delete
           </NavLink>
