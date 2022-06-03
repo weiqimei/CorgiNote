@@ -1,6 +1,15 @@
-.notes-list {
-  border: 5px solid black;
+.note-title {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  font-size: 25px;
+}
+
+.note-content {
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid black;
+  padding-bottom: 15px;
+  font-size: 20px;
 }

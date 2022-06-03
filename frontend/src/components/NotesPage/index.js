@@ -17,22 +17,23 @@ const NotesPage = () => {
     <>
       <div>
         <CreateNoteForm />
-        <div className="notes-list">
-          <h2>Notes</h2>
-          <ul>
-            {notes.map(note => {
-              return <li key={note.id}>
+        <div className="notebook-divider"></div>
+        <h2 className="notebooks-title">Notes</h2>
+        <div className="notebook-box">
+          {notes.map(note => {
+            return <div key={note.id}>
+              <div className="each-note">
                 <NavLink exact to={`notes/${note.id}`}>
-                <div>
-                  {note.title}
-                </div>
+                  <div className="note-title">
+                    {note.title}
+                  </div>
                 </NavLink>
-                <div>
+                <div className="note-content">
                   {note.content}
                 </div>
-              </li>
-            })}
-          </ul>
+              </div>
+            </div>
+          })}
         </div>
       </div>
     </>
