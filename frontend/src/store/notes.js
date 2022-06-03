@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_NOTES = 'notes/GET_NOTES'
 const ADD_NOTE = 'notes/ADD_NOTE'
-const GET_ONE = 'notes/GET_ONE'
+const GET_NOTE = 'notes/GET_NOTE'
 const EDIT_NOTE = 'notes/EDIT_NOTE'
 const DELETE_NOTE = 'notes/DELETE_NOTE'
 
@@ -20,7 +20,7 @@ const addNote = (note) => {
 
 const loadOneNote = (note) => {
   return {
-    type: GET_ONE,
+    type: GET_NOTE,
     note
   }
 }
@@ -40,8 +40,8 @@ const deleteNote = (note) => {
 }
 
 // thunk action creator for getting all notes
-export const getAllNotes = () => async dispatch => {
-  const response = await csrfFetch('api/notes')
+export const getAllNotes = (notebookId) => async dispatch => {
+  const response = await csrfFetch(`/api/notes/${notebookId}`)
 
   if (response.ok) {
     const notes = await response.json();
@@ -128,9 +128,9 @@ const noteReducer = (state = initialState, action) => {
         return newState
       }
       break
-    case GET_ONE:
+    case GET_NOTE:
       const note = {};
-      note[action.note.id] = action.note
+      note[action.notes.id] = action.note
       return {
         ...note
       }

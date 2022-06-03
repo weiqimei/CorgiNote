@@ -40,7 +40,7 @@ const CreateNoteForm = ({ hideForm }) => {
     let createdNote;
     createdNote = await dispatch(createNote(payload))
     if (createdNote) {
-      history.push('/notes');
+      history.push(`/notebooks/${createdNote.notebookId}`);
       reset()
     }
   };

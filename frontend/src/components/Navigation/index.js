@@ -15,10 +15,10 @@ function Navigation({ isLoaded }) {
           <ProfileButton user={sessionUser} />
         </div>
         <div>
-          <NavLink to="/notebooks">Notebooks</NavLink>
+          <NavLink to="/notebooks">View All Notebooks</NavLink>
         </div>
         <div>
-          <NavLink to="/notes">Notes</NavLink>
+          <NavLink to="/notes/new">Create A Note</NavLink>
         </div>
       </div>
     );

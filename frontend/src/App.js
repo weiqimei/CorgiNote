@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/notebooks">
             <NotebooksPage />
           </Route>
-          <Route exact path="/notes">
+          <Route exact path="/notes/new">
             <NotesPage />
           </Route>
           <Route exact path="/notes/:id">
