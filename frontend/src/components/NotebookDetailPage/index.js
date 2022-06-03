@@ -13,31 +13,32 @@ const NotebookDetailPage = () => {
   const sessionUser = useSelector((state) => state.session.user)
   const notes = useSelector((state) => state.notes)
   const notesDisplay = Object.values(notes)
-  
+
   useEffect(() => {
     dispatch(notebooksActions.getNotebook(id))
     dispatch(getAllNotes(id))
   }, [dispatch, id])
-  
+
 
   return (
     <>
       <div>
-      {sessionUser?.id === notebook.userId &&
-        <div>
-          <h1>Notebook Details</h1>
-          <h2>{notebook.name}</h2>
-          {/* <NavLink to={`/notebooks/${notebook.id}/edit`}>
+        {sessionUser?.id === notebook.userId &&
+          <div>
+            <h1>Notebook Details</h1>
+            <h2>{notebook.name}</h2>
+            <h2>notebook id: {notebook.id}</h2>
+            {/* <NavLink to={`/notebooks/${notebook.id}/edit`}>
             Edit
           </NavLink> */}
-          <NavLink to={`/notebooks/${notebook.id}/delete`}>
-            Delete
-          </NavLink>
+            <NavLink to={`/notebooks/${notebook.id}/delete`}>
+              Delete
+            </NavLink>
             <div>
               <DisplayNotes notebookId={id} notes={notesDisplay} />
             </div>
-        </div>
-      }
+          </div>
+        }
       </div>
     </>
   )
