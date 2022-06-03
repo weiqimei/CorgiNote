@@ -33,7 +33,7 @@ const EditNoteForm = () => {
     let updatedNote;
     updatedNote = await dispatch(updateNote(payload))
     if (updatedNote) {
-      history.push(`/notes/${note.id}`)
+      history.push(`/notes`)
     }
   };
 

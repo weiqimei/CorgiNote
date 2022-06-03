@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
 const ADD_NOTEBOOK = 'notebooks/ADD_NOTEBOOK'
 const GET_ONE = 'notes/GET_ONE'
+const DELETE_NOTEBOOK = 'notes/DELETE_NOTEBOOK'
 
 const loadNotebooks = notebooks => ({
   type: GET_NOTEBOOKS,
@@ -19,6 +20,13 @@ const addNotebook = (notebook) => {
 const loadOneNotebook = (notebook) => {
   return {
     type: GET_ONE,
+    notebook
+  }
+}
+
+const deleteNotebook = (notebook) => {
+  return {
+    type: DELETE_NOTEBOOK,
     notebook
   }
 }
@@ -60,10 +68,22 @@ export const getNotebook = (id) => async dispatch => {
   }
 }
 
+// thunk action creator for deleting a notebook
+export const removeNotebook = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/notebooks/${id}`, {
+    method: "DELETE",
+  })
+  if (response.ok) {
+    const notebook = await response.json()
+    dispatch(deleteNotebook(notebook));
+    return
+  }
+}
+
 const initialState = {}
 
 const notebookReducer = (state = initialState, action) => {
-  // const newState = { ...state }
+  const newState = { ...state }
   switch (action.type) {
     case GET_NOTEBOOKS:
       const allNotebooks = {};
@@ -87,7 +107,18 @@ const notebookReducer = (state = initialState, action) => {
       notebook[action.notebook.id] = action.notebook
       return {
         ...notebook
-      }     
+      } 
+    case DELETE_NOTEBOOK:
+      for (let notebook in state.notebooks) {
+        if (notebook.id === action.notebook.id) {
+          delete action.notebook
+          return newState
+        }
+        else {
+          return notebook
+        }
+      }
+      return newState
     default:
       return state;
   }
