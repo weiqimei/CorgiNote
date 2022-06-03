@@ -13,7 +13,7 @@ const DeleteNotePage = () => {
   const handleDeleteClick = (e) => {
     e.preventDefault();
     dispatch(removeNote(id))
-    history.push("/")
+    history.push("/notes")
   }
 
   return (
