@@ -5,13 +5,22 @@ import { getAllNotebooks, createNotebook } from '../../store/notebooks';
 import './CreateNotebookForm.css'
 
 const CreateNotebookForm = ({ hideForm }) => {
-  const currentUserId = useSelector((state) => state.session.user.id)
+  const currentUserId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [userId, setUserId] = useState(currentUserId)
+  const [userId, setUserId] = useState(currentUserId);
   const [name, setName] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const updateName = (e) => setName(e.target.value);
+
+  useEffect(() => {
+    const errors = [];
+
+    if (name.length >= 50) errors.push("Notebook name must be less than 50 characters")
+    setErrors(errors)
+
+  }, [name])
 
   useEffect(() => {
     dispatch(getAllNotebooks());
@@ -47,6 +56,9 @@ const CreateNotebookForm = ({ hideForm }) => {
     <section className='form'>
         <div className='add-notebook-text'>Add Notebook</div>
       <form onSubmit={handleSubmit}>
+        <div className='error-message'>
+          {errors.map((error) => <div key={error}>{error}</div>)}
+        </div>
         <input
           type="text"
           placeholder="Name"

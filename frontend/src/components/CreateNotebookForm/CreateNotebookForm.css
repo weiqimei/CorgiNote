@@ -6,3 +6,10 @@
 .post-button {
   margin-bottom: 10px;
 }
+
+.error-message {
+  margin-top: 28px;
+  margin-bottom: 30px;
+  color: red;
+  font-weight: bold;
+}
