@@ -56,7 +56,7 @@ const CreateNoteForm = ({ hideForm }) => {
 
   const handleCancelClick = (e) => {
     e.preventDefault();
-    history.push('/notes');
+    history.push('/notes/new');
     reset()
   };
 
