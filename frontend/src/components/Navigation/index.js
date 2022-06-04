@@ -10,17 +10,19 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div className='navlinks'>
-        <div>
-          <ProfileButton user={sessionUser} />
-        </div>
-        <div>
-          <NavLink to="/notebooks">View All Notebooks</NavLink>
-        </div>
-        <div>
-          <NavLink to="/notes/new">Create A Note</NavLink>
-        </div>
-      </div>
+      <nav>
+        <ul>
+          <li>
+            <ProfileButton user={sessionUser} />
+          </li>
+          <li a href="#">
+            <NavLink to="/notebooks">View All Notebooks</NavLink>
+          </li>
+          <li a href="#">
+            <NavLink to="/notes/new">Create A Note</NavLink>
+          </li>
+        </ul>
+      </nav>
     );
   } else {
     sessionLinks = (

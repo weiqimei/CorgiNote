@@ -1,11 +1,11 @@
 .notebook-box {
-  border: 5px solid black;
+  /* border: 5px solid black; */
 }
 
 .each-notebook {
     display: flex;
       justify-content: center;
-      border-bottom: 3px solid black;
+      /* border-bottom: 3px solid black; */
     padding-bottom: 30px;
       padding-top: 20px;
   font-size: 30px;
@@ -18,5 +18,6 @@
 }
 
 .notebook-divider {
-  border-bottom: 10px solid black;
+  /* border-bottom: 10px solid black; */
+      
 }
