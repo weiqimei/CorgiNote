@@ -34,7 +34,7 @@ const NotebookDetailPage = () => {
                 {/* <NavLink to={`/notebooks/${notebook.id}/edit`}>
             Edit
           </NavLink> */}
-                <div className="notebook-details-box1">
+                <div className="delete-notebook notebook-details-box1">
                   <NavLink to={`/notebooks/${notebook.id}/delete`}>
                     Delete
                   </NavLink>

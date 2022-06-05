@@ -20,14 +20,18 @@ const NoteDetailPage = () => {
         <div>
           <h1 className="notebook-details-text">Note Details</h1>
           <div className="notebook-details">
-            <h2>{note.title}</h2>
-            <h3>{note.content}</h3>
+            <h1 className="notebook-details-box1">{note.title}</h1>
+            <h3 className="notebook-details-box1">{note.content}</h3>
+            <div className="delete-notebook notebook-details-box1">
             <NavLink to={`/notes/${note.id}/edit`}>
               Edit
             </NavLink>
+            </div>
+            <div className="delete-notebook notebook-details-box1">
             <NavLink to={`/notes/${note.id}/delete`}>
               Delete
             </NavLink>
+            </div>
           </div>
         </div>
       }
