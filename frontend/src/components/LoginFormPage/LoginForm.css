@@ -2,7 +2,7 @@
 
 .login-page {
   width: 360px;
-  padding: 8% 0 0;
+  /* padding: 8% 0 0; */
   margin: auto;
 }
 
@@ -12,7 +12,10 @@
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
-  padding: 45px;
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-bottom: 40px;
+  padding-top: 10px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -60,4 +63,3 @@ body {
 .login {
   margin-bottom: 10px;
 }
-

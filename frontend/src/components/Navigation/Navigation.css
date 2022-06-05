@@ -1,9 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Ruda&display=swap');
 html,
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Gloria Hallelujah";
   font-weight: 300;
   /* background: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/691bf469319927.5b7cf977efb27.png") no-repeat center center fixed; */
 }
@@ -37,14 +35,37 @@ body {
   font-size: 24px;
 }
 
-.navlinks {
+nav {
+  max-width: 960px;
+  /* mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%); */
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+nav ul {
+  text-align: center;
+  /* background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%); */
+  /* box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6); */
+}
+
+nav ul li {
   display: inline-block;
-  padding: 15px 0;
-  margin: 15px 25px;
-  position: relative;
+}
+
+nav ul li a {
+  padding: 18px;
+  font-family: "Open Sans";
+  text-transform: uppercase;
+  color: rgba(0, 35, 122, 0.5);
+  font-size: 18px;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 20px;
+  display: block;
+}
+
+nav ul li a:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(0, 35, 122, 0.7);
 }
 
 .bar {
@@ -63,7 +84,7 @@ body {
   flex-direction: row;
   justify-content: center;
   font-size: 60px;
-  margin-top: 150px;
+  margin-top: 40px;
 }
 
 
@@ -72,8 +93,8 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   /* justify-content: center; */
   align-items: center;
   background-color: #f9c283;
@@ -85,12 +106,13 @@ body {
 }
 
 .dog {
-  position: fixed;
-  top: 88%;
-  left: 30%;
+  /* position: sticky; */
+  position: absolute;
+  top: 80%;
+  left: 38%;
   width: 50vmin;
   height: 40vmin;
-  z-index: 10;
+  z-index: 20;
 }
 
 .heart {

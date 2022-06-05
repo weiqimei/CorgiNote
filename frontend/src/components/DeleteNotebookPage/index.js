@@ -18,11 +18,11 @@ const DeleteNotebookPage = () => {
 
   return (
     <>
-      <div>
-        Are you sure you want to delete?
+      <div className="confirm-delete-text">
+        Are you sure you want to delete this notebook?
       </div>
-      <div>
-        {sessionUser?.id === notebook.userId && <button onClick={handleDeleteClick}>YES DELETE IT</button>}
+      <div className="confirm-delete-button">
+        {sessionUser?.id === notebook.userId && <button className="inner-button" onClick={handleDeleteClick}>CONFIRM DELETE</button>}
       </div>
     </>
   )

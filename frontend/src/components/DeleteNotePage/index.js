@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { removeNote, getNote } from "../../store/notes";
+import './Delete.css'
 
 const DeleteNotePage = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,12 @@ const DeleteNotePage = () => {
 
   return (
     <>
-      <div>
-        Are you sure you want to delete?
+      <div className="confirm-delete-text">
+        Are you sure you want to delete this note?
       </div>
-      <div>
-        {sessionUser?.id === note.userId && <button onClick={handleDeleteClick}>YES DELETE IT</button>}
+      <div className="confirm-delete-button">
+        {sessionUser?.id === note.userId && 
+        <button className="inner-button" onClick={handleDeleteClick}>CONFIRM DELETE</button>}
       </div>
     </>
   )

@@ -42,7 +42,7 @@ const EditNoteForm = () => {
     let updatedNote;
     updatedNote = await dispatch(updateNote(payload))
     if (updatedNote) {
-      history.push(`/notebooks/${notebookId}`)
+      history.push(`/notebooks/${updatedNote.notebookId}`)
     }
   };
 
@@ -56,7 +56,7 @@ const EditNoteForm = () => {
   }, [dispatch, id])
 
   return (
-    <section>
+    <section className='form'>
       <form onSubmit={handleSubmit}>
         <div className='error-message'>
           {errors.map((error) => <div key={error}>{error}</div>)}
@@ -73,13 +73,13 @@ const EditNoteForm = () => {
           required
           value={content}
           onChange={updateContent} />
-        <input
+        {/* <input
           type="text"
           placeholder={note.notebookId}
           required
           value={notebookId}
-          onChange={updateNotebookId} />
-        <button type="submit">Update Note</button>
+          onChange={updateNotebookId} /> */}
+        <button className='post-button' type="submit">Update Note</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </section>
