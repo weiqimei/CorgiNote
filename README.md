@@ -34,6 +34,10 @@ Live Link: https://corgi-note.herokuapp.com
 - Express.js
 - CSS
 
+# Database Schema
+
+# Features List
+
 # Future Features
 - search bar
 - color themed note tags
