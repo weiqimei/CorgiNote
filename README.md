@@ -35,6 +35,7 @@ Live Link: https://corgi-note.herokuapp.com
 - CSS
 
 # Database Schema
+https://github.com/weiqimei/CorgiNote/wiki/Database-Schema
 
 # Features List
 
