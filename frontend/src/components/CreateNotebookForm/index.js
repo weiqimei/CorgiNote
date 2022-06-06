@@ -17,7 +17,7 @@ const CreateNotebookForm = ({ hideForm }) => {
   useEffect(() => {
     const errors = [];
 
-    if (name.length >= 50) errors.push("Notebook name must be less than 50 characters")
+    if (name.length >= 50) errors.push("Notebook name must be less than 50 characters");
     setErrors(errors)
 
   }, [name])

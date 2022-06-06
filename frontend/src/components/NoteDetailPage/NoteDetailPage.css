@@ -1,7 +1,7 @@
-.notebook-details {
+.note-details {
   position: absolute;
   top: 50%;
-  left: 20%;
+  left: 50%;
   width: 500px;
   padding: 40px;
   transform: translate(-50%, -50%);
@@ -11,7 +11,7 @@
   border-radius: 10px;
 }
 
-.notebook-details-text {
+.note-details-text {
   display: flex;
   justify-content: center;
   font-size: 80px;
@@ -20,12 +20,12 @@
   padding-bottom: 40px;
 }
 
-.notebook-details-box1 {
+.note-details-box1 {
   display: flex;
   justify-content: center;
 }
 
-.delete-notebook {
+.delete-note {
   border: 1px solid black;
   border-radius: 0.95em;
   font-size: larger;
@@ -43,7 +43,7 @@
   height: 40px; */
 }
 
-/* .delete-notebook::before {
+/* .delete-note::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -56,19 +56,19 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.delete-notebook:hover {
+.delete-note:hover {
   background: rgb(182, 232, 182);
   transform: translate(0, 0.25em);
 } */
 
-.notes-in-notebook-text {
+.notes-in-note-text {
   display: flex;
   justify-content: center;
 }
 
-.notes-in-notebook {
+.notes-in-note {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 80%;
   width: 500px;
   padding: 40px;

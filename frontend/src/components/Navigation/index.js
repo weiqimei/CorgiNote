@@ -18,8 +18,11 @@ function Navigation({ isLoaded }) {
           <li a href="#">
             <NavLink to="/notebooks">View All Notebooks</NavLink>
           </li>
-          <li a href="#">
+          {/* <li a href="#">
             <NavLink to="/notes/new">Create A Note</NavLink>
+          </li> */}
+          <li a href="#">
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </nav>

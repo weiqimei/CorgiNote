@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getAllNotes, createNote } from '../../store/notes';
 import './CreateNoteForm.css'
 
-const CreateNoteForm = ({ hideForm }) => {
+const CreateNoteForm = ({ hideForm, notebooks }) => {
   const currentUserId = useSelector((state) => state.session.user.id)
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,9 +22,11 @@ const CreateNoteForm = ({ hideForm }) => {
     const errors = [];
 
     if (title.length >= 50) errors.push("Notebook title must be less than 50 characters")
+    if (isNaN(notebookId)) errors.push("notebookId must be a number")
+
     setErrors(errors)
 
-  }, [title])
+  }, [title, notebookId])
 
   useEffect(() => {
     dispatch(getAllNotes());
@@ -41,7 +43,7 @@ const CreateNoteForm = ({ hideForm }) => {
 
     const payload = {
       userId,
-      title, 
+      title,
       content,
       notebookId
     };
@@ -62,35 +64,53 @@ const CreateNoteForm = ({ hideForm }) => {
 
   return (
     <>
-    <section className='form'>
-      <div className='add-note-text'>Add Note</div>
-      <form onSubmit={handleSubmit}>
-        <div className='error-message'>
-          {errors.map((error) => <div key={error}>{error}</div>)}
-        </div>
-        <input
-          type="text"
-          placeholder="Title"
-          required
-          value={title}
-          onChange={updateTitle} />
-        <input
-          type="text"
-          placeholder="Content"
-          required
-          value={content}
-          onChange={updateContent} />
-        <input
+      <section className='form'>
+        <div className='add-note-text'>Add Note</div>
+        <form onSubmit={handleSubmit}>
+          <div className='error-message'>
+            {errors.map((error) => <div key={error}>{error}</div>)}
+          </div>
+          <input
+            type="text"
+            placeholder="Title"
+            required
+            value={title}
+            onChange={updateTitle} />
+          <input
+            type="text"
+            placeholder="Content"
+            required
+            value={content}
+            onChange={updateContent} />
+          <input
           type="text"
           placeholder="NotebookId"
           required
           value={notebookId}
           onChange={updateNotebookId} />
-        <button className='post-button' type="submit">Post New Note</button>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
-      </form>
-    </section>
-      <div class="dog">
+          {/* <div className='dropdown'>
+
+            <label>
+              <select
+              >
+                {notebooks?.map(notebook => (
+                  <option
+                  key={notebook.id}
+                    value={notebook.name}
+                  >
+                    {notebook.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div> */}
+
+
+          <button className='post-button' type="submit">Post New Note</button>
+          <button type="button" onClick={handleCancelClick}>Cancel</button>
+        </form>
+      </section>
+      {/* <div class="dog">
         <div class="heart heart--1"></div>
         <div class="heart heart--2"></div>
         <div class="heart heart--3"></div>
@@ -116,7 +136,7 @@ const CreateNoteForm = ({ hideForm }) => {
           </div>
           <div class="tail"></div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
