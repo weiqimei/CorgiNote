@@ -37,7 +37,8 @@ Live Link: https://corgi-note.herokuapp.com
 # Database Schema
 https://github.com/weiqimei/CorgiNote/wiki/Database-Schema
 
-# Features List
+# Feature List
+https://github.com/weiqimei/CorgiNote/wiki/Feature-List
 
 # Future Features
 - search bar
