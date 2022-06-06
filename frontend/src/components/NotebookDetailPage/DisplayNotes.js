@@ -16,7 +16,7 @@ function DisplayNotes({ notes, notebookId }) {
             <h2 className="notebook-details-box1">
             <NavLink exact to={`/notes/${note.id}`}>{note.title}</NavLink>
             </h2>
-            <h3 className="notebook-details-box1">{note.content}</h3>
+            {/* <h3 className="notebook-details-box1">{note.content}</h3> */}
           </div>
         })}
       </div>

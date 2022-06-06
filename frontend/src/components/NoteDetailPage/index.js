@@ -2,7 +2,8 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import * as notesActions from '../../store/notes'
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import './NoteDetailPage.css'
 
 const NoteDetailPage = () => {
   const dispatch = useDispatch();
@@ -18,16 +19,16 @@ const NoteDetailPage = () => {
     <>
       {sessionUser?.id === note.userId &&
         <div>
-          <h1 className="notebook-details-text">Note Details</h1>
-          <div className="notebook-details">
-            <h1 className="notebook-details-box1">{note.title}</h1>
-            <h3 className="notebook-details-box1">{note.content}</h3>
-            <div className="delete-notebook notebook-details-box1">
+          <h1 className="note-details-text">Note Details</h1>
+          <div className="note-details">
+            <h1 className="note-details-box1">{note.title}</h1>
+            <h3 className="note-details-box1">{note.content}</h3>
+            <div className="delete-note note-details-box1">
             <NavLink to={`/notes/${note.id}/edit`}>
               Edit
             </NavLink>
             </div>
-            <div className="delete-notebook notebook-details-box1">
+            <div className="delete-note note-details-box1">
             <NavLink to={`/notes/${note.id}/delete`}>
               Delete
             </NavLink>
