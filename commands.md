@@ -45,3 +45,6 @@ heroku run npm run sequelize db:seed:all
 # Need to Fix
 - notebookId dropdown menu
 - add note form to notebook details page?
+
+root -> npm run start
+frontend -> npm start
