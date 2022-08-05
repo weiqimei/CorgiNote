@@ -12,7 +12,7 @@
 .inner-button {
   font-family: 'Gloria Hallelujah';
   color: black;
-  background: rgb(76, 177, 76);
+  background: transparent;
   border: 1px solid black;
   border-radius: 0.95em;
   transform-style: preserve-3d;

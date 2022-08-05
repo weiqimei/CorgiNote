@@ -21,7 +21,7 @@ const NotebooksPage = () => {
         <h2 className="notebooks-title">Notebooks</h2>
         <div className="notebook-box">
           {notebooks.map(notebook => {
-            return <div key={notebook.id}>
+            return <div key={notebook.id} className='notebook-div'>
               <NavLink exact to={`/notebooks/${notebook.id}`}>
                 <div className="each-notebook">
                 {notebook.name}
@@ -31,7 +31,7 @@ const NotebooksPage = () => {
           })}
         </div>
       </div>
-      <div class="dog">
+      {/* <div class="dog">
         <div class="heart heart--1"></div>
         <div class="heart heart--2"></div>
         <div class="heart heart--3"></div>
@@ -57,7 +57,7 @@ const NotebooksPage = () => {
           </div>
           <div class="tail"></div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

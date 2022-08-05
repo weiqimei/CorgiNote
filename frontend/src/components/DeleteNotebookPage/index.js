@@ -17,13 +17,21 @@ const DeleteNotebookPage = () => {
     history.push("/notebooks")
   }
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    history.push(`/notebooks/${id}`)
+  }
+
   return (
     <>
       <div className="confirm-delete-text">
         Are you sure you want to delete this notebook?
       </div>
       <div className="confirm-delete-button">
-        {sessionUser?.id === notebook.userId && <button className="inner-button" onClick={handleDeleteClick}>CONFIRM DELETE</button>}
+        {sessionUser?.id === notebook.userId && <button className="inner-button" onClick={handleDeleteClick}>Confirm Delete</button>}
+      </div>
+      <div className="confirm-delete-button">
+        {sessionUser?.id === notebook.userId && <button className="inner-button" onClick={handleCancel}>Cancel</button>}
       </div>
       <div class="dog">
         <div class="heart heart--1"></div>

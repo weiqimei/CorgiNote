@@ -18,6 +18,11 @@ const DeleteNotePage = () => {
     history.push("/notebooks")
   }
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    history.push(`/notes/${id}`)
+  }
+
   useEffect(() => {
     dispatch(getNote(id))
   }, [dispatch, id])
@@ -29,7 +34,11 @@ const DeleteNotePage = () => {
       </div>
       <div className="confirm-delete-button">
         {sessionUser?.id === note.userId && 
-        <button className="inner-button" onClick={handleDeleteClick}>CONFIRM DELETE</button>}
+        <button className="inner-button" onClick={handleDeleteClick}>Confirm Delete</button>}
+      </div>
+      <div className="confirm-delete-button">
+        {sessionUser?.id === note.userId &&
+          <button className="inner-button" onClick={handleCancel}>Cancel</button>}
       </div>
       <div class="dog">
         <div class="heart heart--1"></div>
