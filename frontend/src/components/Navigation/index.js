@@ -40,7 +40,7 @@ function Navigation({ isLoaded }) {
               <div className="bar"></div>
             </span>
           </nav>
-          <nav className='link'>
+          <nav className='link sign-up-link'>
             <span>
               <NavLink to="/signup">Sign Up</NavLink>
               <div className="bar"></div>

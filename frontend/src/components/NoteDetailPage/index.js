@@ -20,18 +20,22 @@ const NoteDetailPage = () => {
       {sessionUser?.id === note.userId &&
         <div>
           <h1 className="note-details-text">Note Details</h1>
-          <div className="note-details">
-            <h1 className="note-details-box1">{note.title}</h1>
-            <h3 className="note-details-box1">{note.content}</h3>
-            <div className="delete-note note-details-box1">
-            <NavLink to={`/notes/${note.id}/edit`}>
-              Edit
-            </NavLink>
-            </div>
-            <div className="delete-note note-details-box1">
-            <NavLink to={`/notes/${note.id}/delete`}>
-              Delete
-            </NavLink>
+          <div className="note-details-div">
+            <div className="note-details">
+              <h1 className="note-details-box1">{note.title}</h1>
+              <h3 className="note-details-box1">{note.content}</h3>
+              <div className="delete-and-edit-note-div">
+                <div className="delete-note note-details-box1">
+                  <NavLink to={`/notes/${note.id}/edit`}>
+                    Edit
+                  </NavLink>
+                </div>
+                <div className="delete-note note-details-box1">
+                  <NavLink to={`/notes/${note.id}/delete`}>
+                    Delete
+                  </NavLink>
+                </div>
+              </div>
             </div>
           </div>
         </div>
