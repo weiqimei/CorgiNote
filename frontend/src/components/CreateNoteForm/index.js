@@ -4,29 +4,29 @@ import { useHistory } from 'react-router-dom';
 import { getAllNotes, createNote } from '../../store/notes';
 import './CreateNoteForm.css'
 
-const CreateNoteForm = ({ hideForm, notebooks }) => {
+const CreateNoteForm = ({ hideForm, notebooks, notebookId }) => {
   const currentUserId = useSelector((state) => state.session.user.id)
   const dispatch = useDispatch();
   const history = useHistory();
   const [userId, setUserId] = useState(currentUserId)
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [notebookId, setNotebookId] = useState('');
+  // const [notebookId, setNotebookId] = useState('');
   const [errors, setErrors] = useState([]);
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateContent = (e) => setContent(e.target.value);
-  const updateNotebookId = (e) => setNotebookId(e.target.value);
+  // const updateNotebookId = (e) => setNotebookId(e.target.value);
 
   useEffect(() => {
     const errors = [];
 
     if (title.length >= 50) errors.push("Notebook title must be less than 50 characters")
-    if (isNaN(notebookId)) errors.push("notebookId must be a number")
+    // if (isNaN(notebookId)) errors.push("notebookId must be a number")
 
     setErrors(errors)
 
-  }, [title, notebookId])
+  }, [title])
 
   useEffect(() => {
     dispatch(getAllNotes());
@@ -35,7 +35,7 @@ const CreateNoteForm = ({ hideForm, notebooks }) => {
   const reset = () => {
     setTitle("");
     setContent("");
-    setNotebookId("");
+    // setNotebookId("");
   }
 
   const handleSubmit = async (e) => {
@@ -82,12 +82,12 @@ const CreateNoteForm = ({ hideForm, notebooks }) => {
             required
             value={content}
             onChange={updateContent} />
-          <input
+          {/* <input
           type="text"
           placeholder="NotebookId"
           required
           value={notebookId}
-          onChange={updateNotebookId} />
+          onChange={updateNotebookId} /> */}
           {/* <div className='dropdown'>
 
             <label>

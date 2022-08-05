@@ -31,7 +31,7 @@ const NotebookDetailPage = () => {
               <h1 className="notebook-details-text">Notebook Details</h1>
               <div className="notebook-details">
                 <h1 className="notebook-details-box1">{notebook.name}</h1>
-                <h2 className="notebook-details-box1">notebook id: {notebook.id}</h2>
+                {/* <h2 className="notebook-details-box1">notebook id: {notebook.id}</h2> */}
                 {/* <NavLink to={`/notebooks/${notebook.id}/edit`}>
             Edit
           </NavLink> */}
@@ -46,7 +46,7 @@ const NotebookDetailPage = () => {
               <DisplayNotes notebookId={id} notes={notesDisplay} />
             </div>
             <div>
-              <CreateNoteForm />
+              <CreateNoteForm notebookId={id} />
             </div>
           </div>
         }
